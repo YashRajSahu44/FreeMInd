@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Activity, Bell, BrainCircuit, HeartPulse, LayoutDashboard, Menu, Moon, ShieldAlert, Sun, UserRound } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import logo from "@/assets/freemind-logo.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 
 const navigation = [
@@ -36,7 +35,7 @@ export function FreeMindShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-18 max-w-[1480px] items-center gap-5 px-5 lg:px-8">
           <Link to="/" className="flex shrink-0 items-center gap-2.5" aria-label="FreeMind dashboard">
-            <img src={logo.url} alt="FreeMind" className="h-11 w-11 rounded-lg object-cover object-top" />
+            <img src="/favicon.png" alt="FreeMind" className="h-11 w-11 rounded-lg object-cover object-top" />
             <div className="leading-none"><span className="font-display text-xl font-bold">Free<span className="text-primary">Mind</span></span><span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Personnel welfare</span></div>
           </Link>
           <nav className="ml-6 hidden flex-1 items-center gap-1 lg:flex" aria-label="Primary navigation">

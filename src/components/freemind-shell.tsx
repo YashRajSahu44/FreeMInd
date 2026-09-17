@@ -46,9 +46,9 @@ export function PageHeading({ eyebrow, title, description, actions }: { eyebrow?
 
 export function SectionTitle({ title, description }: { title: string; description?: string }) { return <div className="mb-4"><h2 className="font-display text-xl font-bold">{title}</h2>{description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}</div>; }
 
-export function Gauge({ value, size = 180, label = "Stable" }: { value: number; size?: number; label?: string }) {
+export function Gauge({ value, label = "Stable" }: { value: number; label?: string }) {
   const r = 44; const c = 2 * Math.PI * r;
-  return <div className="relative shrink-0" style={{ width: size, height: size }}><svg viewBox="0 0 100 100" className="-rotate-90"><circle cx="50" cy="50" r={r} fill="none" stroke="var(--muted)" strokeWidth="7" /><circle cx="50" cy="50" r={r} fill="none" stroke="var(--primary)" strokeWidth="7" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - value / 100)} /></svg><div className="absolute inset-0 flex flex-col items-center justify-center"><span className="font-display text-3xl font-bold">{value}<span className="text-base text-muted-foreground">/100</span></span><span className="mt-1 rounded-full bg-success-soft px-3 py-1 text-xs font-bold text-success">{label}</span></div></div>;
+  return <div className="relative size-44 shrink-0"><svg viewBox="0 0 100 100" className="-rotate-90"><circle cx="50" cy="50" r={r} fill="none" stroke="var(--muted)" strokeWidth="7" /><circle cx="50" cy="50" r={r} fill="none" stroke="var(--primary)" strokeWidth="7" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - value / 100)} /></svg><div className="absolute inset-0 flex flex-col items-center justify-center"><span className="font-display text-3xl font-bold">{value}<span className="text-base text-muted-foreground">/100</span></span><span className="mt-1 rounded-full bg-success-soft px-3 py-1 text-xs font-bold text-success">{label}</span></div></div>;
 }
 
 export function DemoBadge() { return <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-accent px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-primary"><BrainCircuit className="size-3.5" />Demo / synthetic data</span>; }

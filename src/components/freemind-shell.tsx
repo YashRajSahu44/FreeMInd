@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Activity, Bell, BrainCircuit, HeartPulse, LayoutDashboard, Menu, ShieldAlert, UserRound } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { Activity, Bell, BrainCircuit, HeartPulse, LayoutDashboard, Menu, Moon, ShieldAlert, Sun, UserRound } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
 import logo from "@/assets/freemind-logo.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 
@@ -14,6 +14,23 @@ const navigation = [
 
 export function FreeMindShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("freemind-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    document.documentElement.classList.toggle("dark", shouldUseDark);
+    setDarkMode(shouldUseDark);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextMode = !darkMode;
+    setDarkMode(nextMode);
+    document.documentElement.classList.toggle("dark", nextMode);
+    window.localStorage.setItem("freemind-theme", nextMode ? "dark" : "light");
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
@@ -27,6 +44,7 @@ export function FreeMindShell({ children }: { children: ReactNode }) {
           </nav>
           <div className="ml-auto flex items-center gap-3">
             <span className="hidden rounded-full bg-demo px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-demo-foreground sm:inline">Synthetic demo</span>
+            <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={darkMode ? "Switch to light theme" : "Switch to dark theme"} title={darkMode ? "Light theme" : "Dark theme"}>{darkMode ? <Sun /> : <Moon />}</Button>
             <Button variant="ghost" size="icon" aria-label="Notifications" asChild><Link to="/alerts"><Bell /><span className="absolute mt-[-20px] ml-[18px] size-2 rounded-full bg-warning" /></Link></Button>
             <Link to="/profile" className="hidden items-center gap-2.5 sm:flex"><div className="flex size-9 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">AS</div><div className="hidden xl:block"><p className="text-sm font-bold">Officer A. Sharma</p><p className="text-xs text-muted-foreground">Inspector · Delhi</p></div></Link>
             <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Open menu"><Menu /></Button>

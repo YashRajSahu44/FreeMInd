@@ -16,7 +16,7 @@ const checkins = [{ day: "Today", mood: "Good", energy: "Moderate" }, { day: "Ye
 
 function Dashboard() {
   return <>
-    <PageHeading eyebrow="Thursday · 17 September" title="Good Morning, Officer" description="Here’s an overview of your recent wellbeing and workload." actions={<DemoBadge />} />
+    <PageHeading eyebrow="Thursday · 17 September" title="Good Morning, Aman Sharma" description="Here’s an overview of your recent wellbeing and workload." actions={<DemoBadge />} />
     <section className="grid gap-5 xl:grid-cols-[1.35fr_1fr]">
       <Card className="overflow-hidden border-primary/20 bg-card p-6 shadow-soft md:p-8"><div className="flex flex-col items-center gap-7 md:flex-row"><Gauge value={78} /><div className="flex-1"><p className="text-xs font-bold uppercase tracking-[0.12em] text-primary">Personnel Wellbeing Status</p><h2 className="mt-2 font-display text-3xl font-bold">Stable</h2><p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">Based on recent workload, duty patterns, sleep, leave and voluntary wellness inputs.</p><div className="mt-5 flex items-start gap-2 rounded-lg bg-muted p-3 text-xs leading-5 text-muted-foreground"><ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />This wellbeing score is an early warning indicator and not a medical diagnosis.</div></div></div></Card>
       <Card className="border-border p-6 shadow-soft"><SectionTitle title="Recent Duty Pattern" description="Current 7-day operational snapshot" /><div className="grid grid-cols-2 gap-3"><Stat label="Average Duty Hours" value="9.2 hrs/day" /><Stat label="Night Shifts" value="4" /><Stat label="Consecutive Days" value="6" /><Stat label="Deployment Frequency" value="Moderate" /></div></Card>
